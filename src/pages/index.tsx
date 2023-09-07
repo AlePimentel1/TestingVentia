@@ -15,10 +15,10 @@ export default function Home() {
   const [isLoading, setIsLoading] = useState(false);
 
 
-  const clientId = '8ynk5iozc6zhsjw8stk3z9a5a';
-  const redirectUri = 'https://testing-ventia.vercel.app/';
-  const responseType = 'code';
-  const redirectOnError = true;
+  // const clientId = '8ynk5iozc6zhsjw8stk3z9a5a';
+  // const redirectUri = 'https://testing-ventia.vercel.app/';
+  // const responseType = 'code';
+  // const redirectOnError = true;
 
   const handleKnowAccount = async () => {
     setIsLoading(true);
@@ -81,9 +81,9 @@ export default function Home() {
 
   const handleLinkEmail = () => {
     // Construye la URL de autorización de Nylas
-    const authorizationUrl = `https://api.nylas.com/oauth/authorize?client_id=${clientId}&redirect_uri=${redirectUri}&response_type=${responseType}&redirect_on_error=${redirectOnError}`;
+    // const authorizationUrl = `https://api.nylas.com/oauth/authorize?client_id=${clientId}&redirect_uri=${redirectUri}&response_type=${responseType}&redirect_on_error=${redirectOnError}`;
     // Agrega un enlace o botón en tu interfaz de usuario que redirija al usuario a la URL de autorización
-    window.location.href = authorizationUrl;
+    window.location.href = `https://api.nylas.com/oauth/authorize?client_id=8ynk5iozc6zhsjw8stk3z9a5a&redirect_uri=https://testing-ventia.vercel.app/&response_type=code&redirect_on_error=true`;
   }
 
   return (
@@ -97,7 +97,7 @@ export default function Home() {
         value={to}
         onChange={(e) => setTo(e.target.value)}
       />
-      <Button onClick={handleLinkEmail}>
+      <Button onClick={() => window.location.href = `https://api.nylas.com/oauth/authorize?client_id=8ynk5iozc6zhsjw8stk3z9a5a&redirect_uri=https://testing-ventia.vercel.app/&response_type=code&redirect_on_error=true`}>
         Linkear Cuenta
       </Button>
       {/* ------------------ */}

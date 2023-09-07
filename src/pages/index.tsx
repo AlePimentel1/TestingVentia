@@ -50,6 +50,17 @@ export default function Home() {
     >
       <Input
         className='my-4'
+        type="text"
+        placeholder="To"
+        value={to}
+        onChange={(e) => setTo(e.target.value)}
+      />
+      <Button onClick={handleKnowAccount}>
+        Linkear Cuenta
+      </Button>
+      {/* ------------------ */}
+      <Input
+        className='my-4'
         type="email"
         placeholder="To"
         value={to}

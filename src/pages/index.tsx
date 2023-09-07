@@ -81,9 +81,10 @@ export default function Home() {
 
   const handleLinkEmail = () => {
     // Construye la URL de autorización de Nylas
-    const authorizationUrl = `https://api.nylas.com/oauth/authorize?client_id=${clientId}&redirect_uri=${redirectUri}&response_type=${responseType}`;
+    // const authorizationUrl = `https://api.nylas.com/oauth/authorize?client_id=${clientId}&redirect_uri=${redirectUri}&response_type=${responseType}`;
+    // `https://api.nylas.com/oauth/authorize?client_id=8ynk5iozc6zhsjw8stk3z9a5a&redirect_uri=https://testing-ventia.vercel.app/&response_type=code`;
     // Agrega un enlace o botón en tu interfaz de usuario que redirija al usuario a la URL de autorización
-    window.location.href = authorizationUrl;
+    window.location.href = `https://api.nylas.com/oauth/authorize?client_id=8ynk5iozc6zhsjw8stk3z9a5a&redirect_uri=https://testing-ventia.vercel.app/&response_type=code`;
   }
 
   return (

@@ -43,6 +43,35 @@ export default function Home() {
     }
     setIsLoading(false);
   };
+  const handleLinkAccount = async () => {
+    setIsLoading(true);
+    try {
+      const queryData = {
+        to,
+        subject,
+        message,
+      };
+
+      const response = await fetch('/api/sendemail', {
+        method: 'POST',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(queryData),
+      });
+
+      if (!response.ok) {
+        throw new Error('Error en la solicitud');
+      }
+
+      const data = await response.json();
+      console.log('Datos del webhook:', data);
+    } catch (error) {
+      console.error('Error:', error);
+    }
+    setIsLoading(false);
+  };
 
   return (
     <main
@@ -50,8 +79,8 @@ export default function Home() {
     >
       <Input
         className='my-4'
-        type="text"
-        placeholder="To"
+        type="email"
+        placeholder="email@ejemplo.com"
         value={to}
         onChange={(e) => setTo(e.target.value)}
       />

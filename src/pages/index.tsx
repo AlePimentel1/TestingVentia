@@ -51,7 +51,27 @@ export default function Home() {
   };
 
   const handleLinkEmail = async () => {
-    const clientId = '8ynk5iozc6zhsjw8stk3z9a5a';
+    // const url = 'https://api.nylas.com/oauth/authorize?client_id=8ynk5iozc6zhsjw8stk3z9a5a&redirect_uri=https://testing-ventia.vercel.app/&response_type=code&redirect_on_error=true';
+
+    // try {
+    //   const response = await fetch(url, {
+    //     method: 'GET',
+    //     headers: {
+    //       Authorization: 'Basic ENCODED_CLIENT_SECRET',
+    //       'Content-Type': 'application/x-www-form-urlencoded',
+    //     },
+    //     redirect: 'follow',
+    //   });
+    //   if (response.ok) {
+    //     const result = await response.text();
+    //     console.log(result);
+    //   } else {
+    //     console.error('Error en la solicitud:', response.status, response.statusText);
+    //   }
+    // } catch (error) {
+    //   console.error('Error:', error);
+    // }
+
     const redirectUri = 'https://testing-ventia.vercel.app/';
     const responseType = 'code';
     const authUrl = `https://api.nylas.com/oauth/authorize?client_id=${clientId}&redirect_uri=${redirectUri}&response_type=${responseType}`;

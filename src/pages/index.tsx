@@ -15,75 +15,75 @@ export default function Home() {
   const [isLoading, setIsLoading] = useState(false);
 
 
-  // const clientId = '8ynk5iozc6zhsjw8stk3z9a5a';
-  // const redirectUri = 'https://testing-ventia.vercel.app/';
-  // const responseType = 'code';
-  // const redirectOnError = true;
+  const clientId = '8ynk5iozc6zhsjw8stk3z9a5a';
+  const redirectUri = 'https://testing-ventia.vercel.app/';
+  const responseType = 'code';
+  const redirectOnError = true;
 
-  const handleKnowAccount = async () => {
-    setIsLoading(true);
-    try {
-      const queryData = {
-        to,
-        subject,
-        message,
-      };
+  // const handleKnowAccount = async () => {
+  //   setIsLoading(true);
+  //   try {
+  //     const queryData = {
+  //       to,
+  //       subject,
+  //       message,
+  //     };
 
-      const response = await fetch('/api/sendemail', {
-        method: 'POST',
-        headers: {
-          'Accept': 'application/json',
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(queryData),
-      });
+  //     const response = await fetch('/api/sendemail', {
+  //       method: 'POST',
+  //       headers: {
+  //         'Accept': 'application/json',
+  //         'Content-Type': 'application/json',
+  //       },
+  //       body: JSON.stringify(queryData),
+  //     });
 
-      if (!response.ok) {
-        throw new Error('Error en la solicitud');
-      }
+  //     if (!response.ok) {
+  //       throw new Error('Error en la solicitud');
+  //     }
 
-      const data = await response.json();
-      console.log('Datos del webhook:', data);
-    } catch (error) {
-      console.error('Error:', error);
-    }
-    setIsLoading(false);
-  };
-  const handleLinkAccount = async () => {
-    setIsLoading(true);
-    try {
-      const queryData = {
-        to,
-        subject,
-        message,
-      };
+  //     const data = await response.json();
+  //     console.log('Datos del webhook:', data);
+  //   } catch (error) {
+  //     console.error('Error:', error);
+  //   }
+  //   setIsLoading(false);
+  // };
+  // const handleLinkAccount = async () => {
+  //   setIsLoading(true);
+  //   try {
+  //     const queryData = {
+  //       to,
+  //       subject,
+  //       message,
+  //     };
 
-      const response = await fetch('/api/sendemail', {
-        method: 'POST',
-        headers: {
-          'Accept': 'application/json',
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(queryData),
-      });
+  //     const response = await fetch('/api/sendemail', {
+  //       method: 'POST',
+  //       headers: {
+  //         'Accept': 'application/json',
+  //         'Content-Type': 'application/json',
+  //       },
+  //       body: JSON.stringify(queryData),
+  //     });
 
-      if (!response.ok) {
-        throw new Error('Error en la solicitud');
-      }
+  //     if (!response.ok) {
+  //       throw new Error('Error en la solicitud');
+  //     }
 
-      const data = await response.json();
-      console.log('Datos del webhook:', data);
-    } catch (error) {
-      console.error('Error:', error);
-    }
-    setIsLoading(false);
-  };
+  //     const data = await response.json();
+  //     console.log('Datos del webhook:', data);
+  //   } catch (error) {
+  //     console.error('Error:', error);
+  //   }
+  //   setIsLoading(false);
+  // };
 
   const handleLinkEmail = () => {
     // Construye la URL de autorización de Nylas
-    // const authorizationUrl = `https://api.nylas.com/oauth/authorize?client_id=${clientId}&redirect_uri=${redirectUri}&response_type=${responseType}&redirect_on_error=${redirectOnError}`;
+    const authorizationUrl = `https://api.nylas.com/oauth/authorize?client_id=${clientId}&redirect_uri=${redirectUri}&response_type=${responseType}`;
     // Agrega un enlace o botón en tu interfaz de usuario que redirija al usuario a la URL de autorización
-    window.location.href = `https://api.nylas.com/oauth/authorize?client_id=8ynk5iozc6zhsjw8stk3z9a5a&redirect_uri=https://testing-ventia.vercel.app/&response_type=code&redirect_on_error=true`;
+    window.location.href = authorizationUrl;
   }
 
   return (
@@ -97,7 +97,7 @@ export default function Home() {
         value={to}
         onChange={(e) => setTo(e.target.value)}
       />
-      <Button onClick={() => window.location.href = `https://api.nylas.com/oauth/authorize?client_id=8ynk5iozc6zhsjw8stk3z9a5a&redirect_uri=https://testing-ventia.vercel.app/&response_type=code&redirect_on_error=true`}>
+      <Button onClick={handleLinkEmail}>
         Linkear Cuenta
       </Button>
       {/* ------------------ */}

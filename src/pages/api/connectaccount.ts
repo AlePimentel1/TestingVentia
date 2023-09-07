@@ -11,7 +11,7 @@ const connect = async (req: NextApiRequest, res: NextApiResponse) => {
     try {
 
     } catch (error) {
-        return res.status(404).send({ error: error.message })
+        return res.status(404).send({ error: error })
     }
 }
 

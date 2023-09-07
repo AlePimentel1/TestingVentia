@@ -49,7 +49,7 @@ const sendEmail = async (req: NextApiRequest, res: NextApiResponse) => {
 
         return res.status(200).json({ result: `El resultado fue ${responseData}` });
     } catch (error) {
-        res.status(404).json({ error: error.message });
+        res.status(404).json({ error: error });
     }
 }
 

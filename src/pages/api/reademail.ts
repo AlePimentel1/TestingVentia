@@ -21,7 +21,7 @@ const read = async (req: NextApiRequest, res: NextApiResponse) => {
         return res.status(200).send({ emails: `Tus emails son ${result.body}` })
 
     } catch (error) {
-        return res.status(404).send({ error: error.message })
+        return res.status(404).send({ error: error })
     }
 }
 

@@ -79,15 +79,12 @@ export default function Home() {
     setIsLoading(false);
   };
 
-  // Construye la URL de autorización de Nylas
-  const authorizationUrl = `https://api.nylas.com/oauth/authorize?client_id=${clientId}&redirect_uri=${redirectUri}&response_type=${responseType}&redirect_on_error=${redirectOnError}`;
-
-  // Agrega un enlace o botón en tu interfaz de usuario que redirija al usuario a la URL de autorización
-  const authButton = document.getElementById('auth-button'); // Reemplaza 'auth-button' con el ID o selector adecuado de tu elemento HTML
-  authButton?.addEventListener('click', () => {
+  const handleLinkEmail = () => {
+    // Construye la URL de autorización de Nylas
+    const authorizationUrl = `https://api.nylas.com/oauth/authorize?client_id=${clientId}&redirect_uri=${redirectUri}&response_type=${responseType}&redirect_on_error=${redirectOnError}`;
+    // Agrega un enlace o botón en tu interfaz de usuario que redirija al usuario a la URL de autorización
     window.location.href = authorizationUrl;
-  });
-
+  }
 
   return (
     <main
@@ -100,7 +97,7 @@ export default function Home() {
         value={to}
         onChange={(e) => setTo(e.target.value)}
       />
-      <Button id='authButton'>
+      <Button onClick={handleLinkEmail}>
         Linkear Cuenta
       </Button>
       {/* ------------------ */}

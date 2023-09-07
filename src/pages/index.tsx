@@ -14,6 +14,12 @@ export default function Home() {
   const [message, setMessage] = useState('');
   const [isLoading, setIsLoading] = useState(false);
 
+
+  const clientId = '8ynk5iozc6zhsjw8stk3z9a5a';
+  const redirectUri = 'https://testing-ventia.vercel.app/';
+  const responseType = 'code';
+  const redirectOnError = true;
+
   const handleKnowAccount = async () => {
     setIsLoading(true);
     try {
@@ -73,6 +79,16 @@ export default function Home() {
     setIsLoading(false);
   };
 
+  // Construye la URL de autorización de Nylas
+  const authorizationUrl = `https://api.nylas.com/oauth/authorize?client_id=${clientId}&redirect_uri=${redirectUri}&response_type=${responseType}&redirect_on_error=${redirectOnError}`;
+
+  // Agrega un enlace o botón en tu interfaz de usuario que redirija al usuario a la URL de autorización
+  const authButton = document.getElementById('auth-button'); // Reemplaza 'auth-button' con el ID o selector adecuado de tu elemento HTML
+  authButton?.addEventListener('click', () => {
+    window.location.href = authorizationUrl;
+  });
+
+
   return (
     <main
       className={`flex min-h-screen flex-col items-center justify-center p-24 ${inter.className}`}
@@ -84,7 +100,7 @@ export default function Home() {
         value={to}
         onChange={(e) => setTo(e.target.value)}
       />
-      <Button onClick={handleKnowAccount}>
+      <Button id='authButton'>
         Linkear Cuenta
       </Button>
       {/* ------------------ */}

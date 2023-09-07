@@ -80,8 +80,6 @@ export default function Home() {
   };
 
   const handleLinkEmail = async () => {
-
-
     const clientId = '8ynk5iozc6zhsjw8stk3z9a5a'
     const redirectUri = 'https://testing-ventia.vercel.app/'
 
@@ -102,13 +100,7 @@ export default function Home() {
     <main
       className={`flex min-h-screen flex-col items-center justify-center p-24 ${inter.className}`}
     >
-      {/* <Input
-        className='my-4'
-        type="email"
-        placeholder="email@ejemplo.com"
-        value={to}
-        onChange={(e) => setTo(e.target.value)}
-      /> */}
+
       <Button onClick={handleLinkEmail}>
         Linkear Cuenta de Email
       </Button>

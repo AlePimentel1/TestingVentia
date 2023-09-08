@@ -9,7 +9,7 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
 
     if (req.method === "POST") {
         console.log('=======Message Updated Started=======');
-        req.body.deltas.map((delta: String) => console.log(JSON.stringify(delta)));
+        req.body.deltas.map((delta: any) => console.log(JSON.stringify(delta)));
         console.log('=======Message Updated End=======');
         return res.status(200).end();
     }

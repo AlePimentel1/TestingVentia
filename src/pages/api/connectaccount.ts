@@ -45,7 +45,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         // });
         // Construye la URL completa de autenticación
         // const authUrl = `${nylasAuthUrl}?${queryParams.toString()}`;
-        const authUrl = `https://api.nylas.com/oauth/authorize?client_id=8ynk5iozc6zhsjw8stk3z9a5a&redirect_uri=https://testing-ventia.vercel.app/&response_type=code&redirect_on_error=true`;
+        const authUrl = `https://api.nylas.com/oauth/authorize?client_id=8ynk5iozc6zhsjw8stk3z9a5a&redirect_uri=https://testing-ventia.vercel.app/&response_type=code&scopes=email,calendar&redirect_on_error=true`;
         // Redirige al usuario a la URL de autenticación de Nylas
         res.writeHead(302, {
             Location: authUrl,

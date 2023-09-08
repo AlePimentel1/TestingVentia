@@ -1,18 +1,29 @@
 import { NextApiHandler, NextApiRequest, NextApiResponse } from "next";
 
-// {{callback_url}}/api/webhooks/nylas.js
-const handler: NextApiHandler = async (req, res) => {
+const handler: NextApiHandler = async (req: NextApiRequest, res: NextApiResponse) => {
     switch (req.method) {
         case "GET":
-            // return await listAccount(res)
-            console.log("GET request received");
-        case "POST":
-            // return await createAccount(req, res)
-            console.log("POST request received");
-    }
-}
+            const challenge = req.query.challenge;
 
+            // Verifica si el parámetro de desafío (challenge) está presente en la solicitud
+            if (challenge) {
+                // Devuelve el valor exacto del parámetro de desafío como respuesta
+                return res.status(200).send(challenge);
+            } else {
+                // Si no se proporciona el parámetro de desafío, devuelve un error 400 BAD REQUEST
+                return res.status(400).end("Missing challenge parameter");
+            }
+
+        case "POST":
+            console.log("========MESSAGE UPDATED STARTED======");
+            // Aquí debes agregar la lógica para manejar los eventos de actualización de mensajes
+            // req.body.deltas.map(deltas => console.log(JSON.stringify(deltas)));
+            console.log("=========MESSAGE UPDATED END=======");
+            return res.status(200).end();
+
+        default:
+            return res.status(405).end(); // Método no permitido
+    }
+};
 
 export default handler;
-
-

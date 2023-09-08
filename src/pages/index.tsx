@@ -50,33 +50,26 @@ export default function Home() {
     setIsLoading(false);
   };
 
-  const handleLinkEmail = async () => {
-    // const url = 'https://api.nylas.com/oauth/authorize?client_id=8ynk5iozc6zhsjw8stk3z9a5a&redirect_uri=https://testing-ventia.vercel.app/&response_type=code&redirect_on_error=true';
+  // const handleLinkEmail = async () => {
+  //   try {
+  //     // Realiza la solicitud GET al endpoint api/connectacount
+  //     const response = await fetch('/api/connectaccount', {
+  //       method: 'GET',
+  //     }
+  //     )
+  //   } catch (error) {
+  //     console.log('Error:', error.message);
+  //   }
 
-    // try {
-    //   const response = await fetch(url, {
-    //     method: 'GET',
-    //     headers: {
-    //       Authorization: 'Basic ENCODED_CLIENT_SECRET',
-    //       'Content-Type': 'application/x-www-form-urlencoded',
-    //     },
-    //     redirect: 'follow',
-    //   });
-    //   if (response.ok) {
-    //     const result = await response.text();
-    //     console.log(result);
-    //   } else {
-    //     console.error('Error en la solicitud:', response.status, response.statusText);
-    //   }
-    // } catch (error) {
-    //   console.error('Error:', error);
-    // }
+  //   // const clientId = '8ynk5iozc6zhsjw8stk3z9a5a'; // Reemplaza con tu client_id de Nylas
+  //   // const redirectUri = 'https://testing-ventia.vercel.app/'; // Reemplaza con tu redirect_uri de Nylas
+  //   // const responseType = 'code';
+  //   // const redirectOnError = true;
 
-    const redirectUri = 'https://testing-ventia.vercel.app/';
-    const responseType = 'code';
-    const authUrl = `https://api.nylas.com/oauth/authorize?client_id=${clientId}&redirect_uri=${redirectUri}&response_type=${responseType}`;
-    window.location.href = authUrl;
-  }
+  //   // const authUrl = `https://api.nylas.com/oauth/authorize?client_id=${clientId}&redirect_uri=${redirectUri}&response_type=${responseType}&redirect_on_error=${redirectOnError}`;
+
+  //   // window.location.href = authUrl;
+  // };
 
 
   return (
@@ -84,9 +77,10 @@ export default function Home() {
       className={`flex min-h-screen flex-col items-center justify-center p-24 ${inter.className}`}
     >
       <h1 className='m-4 font-bold'>Bienvenido, haz click y asocia tu Email</h1>
-      <Button onClick={handleLinkEmail}>
+      <a href="/api/connectaccount">Autenticar Email</a>
+      {/* <Button onClick={}>
         Autentificar Email
-      </Button>
+      </Button> */}
       {/* ------------------ */}
       {/* <Input
         className='my-4'
@@ -115,4 +109,3 @@ export default function Home() {
     </main >
   );
 }
-

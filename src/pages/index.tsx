@@ -79,7 +79,6 @@ export default function Home() {
     >
       <h1 className='m-4 font-bold'>Bienvenido, haz click y asocia tu Email</h1>
       <Link href='/api/connectaccount'>Autentica Email</Link>
-      {/* <a href="/api/connectaccount">Autenticar Email</a> */}
       {/* <Button onClick={}>
         Autentificar Email
       </Button> */}

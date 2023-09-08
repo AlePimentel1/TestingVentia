@@ -1,5 +1,6 @@
+import { NextApiHandler, NextApiRequest, NextApiResponse } from "next";
 
-export default function handler(req, res) {
+export default function handler(req: NextApiRequest, res: NextApiResponse) {
     if (req.method === "GET" && req.query.challenge) {
         console.log(`Recieved challenge code! - ${req.query.challenge}`);
         console.log(`Now returning challenge code! - ${req.query.challenge}`);

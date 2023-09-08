@@ -17,7 +17,7 @@ export default function Home() {
 
 
   const clientId = '8ynk5iozc6zhsjw8stk3z9a5a';
-  const redirectUri = 'https://testing-ventia.vercel.app/';
+  const redirectUri = 'https://testingventia.vercel.app/';
   const responseType = 'code';
   const redirectOnError = true;
 

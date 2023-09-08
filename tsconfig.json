@@ -27,7 +27,7 @@
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx",
-    "src/pages/api/nylas-webhook.ts"
+    "src/pages/api/nylas.js"
   ],
   "exclude": [
     "node_modules"

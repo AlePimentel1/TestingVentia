@@ -5,6 +5,7 @@ import { ArrowBigDown } from 'lucide-react'
 import { Input } from '@/components/ui/input'
 import { useState } from 'react'
 import { Textarea } from '@/components/ui/textarea'
+import Link from 'next/link'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -77,7 +78,8 @@ export default function Home() {
       className={`flex min-h-screen flex-col items-center justify-center p-24 ${inter.className}`}
     >
       <h1 className='m-4 font-bold'>Bienvenido, haz click y asocia tu Email</h1>
-      <a href="/api/connectaccount">Autenticar Email</a>
+      <Link href='/api/connectaccount'>Autentica Email</Link>
+      {/* <a href="/api/connectaccount">Autenticar Email</a> */}
       {/* <Button onClick={}>
         Autentificar Email
       </Button> */}

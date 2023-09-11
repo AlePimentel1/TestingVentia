@@ -15,7 +15,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         case 'POST': {
             // const authCode = req.query.code;
             if (req.query) {
-                return res.status(200).send({ codigo: `El codigo es: ${JSON.stringify(req.query)} hola hola` })
+                return res.status(200).send({ codigo: `El codigo es: ${JSON.stringify(req.query.code)} hola hola` })
             }
             // return res.status(200).json({ authCode });
             // } else {

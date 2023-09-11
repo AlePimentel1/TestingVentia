@@ -8,7 +8,6 @@ export async function handler(req: NextApiRequest, res: NextApiResponse) {
 }
 
 const read = async (_: NextApiRequest, res: NextApiResponse) => {
-    debugger
     try {
         const response = await fetch("https://api.nylas.com/messages?limit=5", {
             method: 'GET',

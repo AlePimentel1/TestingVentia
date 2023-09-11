@@ -70,7 +70,7 @@ export default function Home() {
             className={`flex min-h-screen flex-col items-center justify-center p-24 ${inter.className}`}
         >
             <Link href='/index'>Volver al inicio</Link>
-            <h1 className='m-4 font-bold'>Estos son tus emails:</h1>
+            <h1 className='m-4 font-bold'>Estos son tus emails :</h1>
 
             {emailsInfo && (
                 <div>

@@ -14,14 +14,21 @@ const read = async (_: NextApiRequest, res: NextApiResponse) => {
             method: 'GET',
             headers: {
                 Accept: 'application/json',
-                Authorization: `Bearer r3j2Q26H7vT8KBUIVwjePofwudyNh5`,
+                Authorization: 'Bearer YAIt2ot9BtuQJF3TbMDCJw9LnPogrf',
                 'Content-Type': 'application/json',
-            }
-        })
-        return res.status(200).send({ emails: result.body })
+            },
+        });
 
-    } catch (error) {
-        return res.status(404).send({ error: error })
+        if (!result.ok) {
+            throw new Error('Error en la solicitud GET');
+        }
+
+        const data = await result.text(); // Obtén el cuerpo de la respuesta como texto
+
+        return res.status(200).send({ emails: data });
+
+    } catch (error: any) {
+        return res.status(404).send({ error: error.message });
     }
 }
 

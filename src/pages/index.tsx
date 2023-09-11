@@ -55,7 +55,6 @@ export default function Home() {
   const router = useRouter();
 
   useEffect(() => {
-    // Verifica si la URL actual contiene un parámetro "code"
     if (router.query.code) {
       const code = router.query.code as string;
 
@@ -83,6 +82,8 @@ export default function Home() {
         .catch((error) => {
           console.error('Error al realizar la solicitud POST:', error);
         });
+
+      // const accountInfo = await fetch('/api/knowaccount')obtenerInformacionDeLaCuenta(authCode, client_id, client_secret);
     }
   }, [router.query.code]);
 
@@ -92,6 +93,8 @@ export default function Home() {
     >
       <h1 className='m-4 font-bold'>Bienvenido, haz click y asocia tu Email</h1>
       <Link href='/api/connectaccount'>Autentica Email</Link>
+
+
       {/* <Button onClick={}>
         Autentificar Email
       </Button> */}

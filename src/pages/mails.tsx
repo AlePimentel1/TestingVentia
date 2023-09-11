@@ -14,35 +14,37 @@ export default function Home() {
     const [isLoading, setIsLoading] = useState(false);
     const [emailsInfo, setEmailsInfo] = useState(null);
 
-    const handleViewMessages = async () => {
-        setIsLoading(true);
-        try {
-            const response = await fetch('/api/reademail', {
-                method: 'POST',
-                headers: {
-                    'Accept': 'application/json',
-                    'Content-Type': 'application/json',
-                },
-                // body: JSON.stringify(),
-            });
+    // const handleViewMessages = async () => {
+    //     setIsLoading(true);
+    //     try {
+    //         const response = await fetch('/api/reademail', {
+    //             method: 'POST',
+    //             headers: {
+    //                 'Accept': 'application/json',
+    //                 'Content-Type': 'application/json',
+    //             },
+    //             // body: JSON.stringify(),
+    //         });
 
-            if (!response.ok) {
-                throw new Error('Error en la solicitud');
-            }
+    //         if (!response.ok) {
+    //             throw new Error('Error en la solicitud');
+    //         }
 
-            const data = await response.json();
-            console.log('Datos del webhook:', data);
-        } catch (error) {
-            console.error('Error:', error);
-        }
-        setIsLoading(false);
-    };
+    //         const data = await response.json();
+    //         console.log('Datos del webhook:', data);
+    //     } catch (error) {
+    //         console.error('Error:', error);
+    //     }
+    //     setIsLoading(false);
+    // };
 
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await fetch(`/api/reademail`, {
-                    method: 'GET',
+                console.log("B")
+
+                const response = await fetch('/api/reademail', {
+                    method: 'POST',
                     headers: {
                         'Accept': 'application/json',
                         'Content-Type': 'application/json',
@@ -50,12 +52,12 @@ export default function Home() {
                 });
 
                 if (!response.ok) {
-                    throw new Error('Error en la solicitud GET');
+                    throw new Error('Error en la solicitud');
                 }
+                console.log("A")
 
                 const data = await response.json();
-                setEmailsInfo(data);
-                console.log('Datos de los emails:', data);
+                console.log('Datos del webhook:', data);
             } catch (error) {
                 console.error('Error:', error);
             }

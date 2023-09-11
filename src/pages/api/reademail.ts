@@ -15,7 +15,7 @@ const read = async (req: NextApiRequest, res: NextApiResponse) => {
             method: 'GET',
             headers: {
                 Accept: 'application/json',
-                Authorization: `Bearer 6iToeQOAkJjePIeFQh2CkGA5F6aXK4`,
+                Authorization: `Bearer `,
                 'Content-Type': 'application/json',
             }
         })

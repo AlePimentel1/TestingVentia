@@ -38,12 +38,40 @@ export default function Home() {
         setIsLoading(false);
     };
 
+    useEffect(() => {
+        const token = 'vHZC1tzfxcCvl3cVinEHla6lwzSgr8';
+        const fetchData = async () => {
+            try {
+                const response = await fetch(`/api/reademail?accessToken=${token}`, {
+                    method: 'GET',
+                    headers: {
+                        'Accept': 'application/json',
+                        'Content-Type': 'application/json',
+                    },
+                });
+
+                if (!response.ok) {
+                    throw new Error('Error en la solicitud GET');
+                }
+
+                const data = await response.json();
+                setEmailsInfo(data);
+                console.log('Datos de los emails:', data);
+            } catch (error) {
+                console.error('Error:', error);
+            }
+        };
+
+        fetchData();
+    }, []);
+
+
     return (
         <main
             className={`flex min-h-screen flex-col items-center justify-center p-24 ${inter.className}`}
         >
             <Link href='/index'>Volver al inicio</Link>
-            <h1 className='m-4 font-bold'>Estos son tus emails</h1>
+            <h1 className='m-4 font-bold'>Estos son tus emails:</h1>
 
             {emailsInfo && (
                 <div>

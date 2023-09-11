@@ -28,22 +28,6 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
             break
         }
     }
-    // if (req.method === 'GET') {
-    //     // Construye la URL de autenticación de Nylas con los parámetros necesarios
-    //     // const nylasAuthUrl = 'https://api.nylas.com/oauth/authorize';
-    //     // const queryParams = new URLSearchParams({
-    //     //     client_id: '8ynk5iozc6zhsjw8stk3z9a5a', // Reemplaza con tu client_id de Nylas
-    //     //     redirect_uri: 'https://testing-ventia.vercel.app/', // Reemplaza con tu redirect_uri de Nylas
-    //     //     response_type: 'code', // Utiliza 'code' para aplicaciones del lado del servidor
-    //     //     scopes: 'email:read email:write', // Reemplaza con los alcances que necesites
-    //     // });
-    //     // Construye la URL completa de autenticación
-    //     // const authUrl = `${nylasAuthUrl}?${queryParams.toString()}`;
-    //     // Redirige al usuario a la URL de autenticación de Nylas
-
-    // } else {
-    //     res.status(405).end(); // Método no permitido
-    // }
 }
 
 

@@ -15,7 +15,7 @@ export default function Home() {
   const [subject, setSubject] = useState('');
   const [message, setMessage] = useState('');
   const [isLoading, setIsLoading] = useState(false);
-  const [accountInfo, setAccountInfo] = useState('');
+  const [accountInfo, setAccountInfo] = useState(null);
 
 
   const clientId = '8ynk5iozc6zhsjw8stk3z9a5a';
@@ -78,11 +78,8 @@ export default function Home() {
           return response.json();
         })
         .then((data) => {
-          const parsedData = JSON.parse(data);
-          console.log('Respuesta del servidor:', parsedData);
-          setAccountInfo(parsedData.accountData);
-          // console.log('Respuesta del servidor:', data);
-          // setAccountInfo(data.accountData);
+          setAccountInfo(data);
+          console.log('Respuesta del servidor:', data);
         })
         .catch((error) => {
           console.error('Error al realizar la solicitud POST:', error);
@@ -96,15 +93,21 @@ export default function Home() {
     >
       <h1 className='m-4 font-bold'>Bienvenido, haz click y asocia tu Email</h1>
       <Link href='/api/connectaccount'>Autentica Email</Link>
-
-      <div>
+      {/* <div>
         {accountInfo && (
           <div>
             <h2>Información de la cuenta:</h2>
             {JSON.stringify(accountInfo)}
           </div>
         )}
-      </div>
+      </div> */}
+
+      {accountInfo && (
+        <div>
+          <h2>Respuesta del servidor:</h2>
+          <pre>{JSON.stringify(accountInfo, null, 2)}</pre>
+        </div>
+      )}
 
       {/* <Button onClick={}>
         Autentificar Email

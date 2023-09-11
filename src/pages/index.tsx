@@ -109,9 +109,9 @@ export default function Home() {
         </div>
       )}
 
-      {/* <Button onClick={}>
-        Autentificar Email
-      </Button> */}
+      <Link href='/mails'>Ir a ver mis email</Link>
+
+
       {/* ------------------ */}
       {/* <Input
         className='my-4'

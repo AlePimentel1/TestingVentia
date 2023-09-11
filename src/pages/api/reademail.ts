@@ -10,25 +10,28 @@ export async function handler(req: NextApiRequest, res: NextApiResponse) {
 
 const read = async (_: NextApiRequest, res: NextApiResponse) => {
     try {
-        const result = await fetch('https://api.nylas.com/messages?limit=5', {
-            method: 'GET',
-            headers: {
-                Accept: 'application/json',
-                Authorization: 'Bearer YAIt2ot9BtuQJF3TbMDCJw9LnPogrf',
-                'Content-Type': 'application/json',
-            },
-        });
+        const myHeaders = new Headers();
+        myHeaders.append("Authorization", "Bearer YAIt2ot9BtuQJF3TbMDCJw9LnPogrf");
+        myHeaders.append("Cookie", "__cf_bm=8VhaZOVXcpc3Yd09lHjaLFdQu_faQ3NgtPZkVVTb2IY-1694453477-0-ASLRfzicN5WMG3vFUAfzaNe0OfCXkrxsUX4K/aUysmrz0zyygFHZLGK0IypsvZTmKW/ccz6OT/1r9AxtFTxFZX0=");
 
-        if (!result.ok) {
+        const requestOptions = {
+            method: 'GET',
+            headers: myHeaders,
+            redirect: 'follow' as RequestRedirect, // Asigna 'follow' como RequestRedirect
+        };
+
+        const response = await fetch("https://api.nylas.com/messages?limit=5", requestOptions);
+
+        if (!response.ok) {
             throw new Error('Error en la solicitud GET');
         }
 
-        // const data = await result.text();
+        const result = await response.text();
 
-        return res.status(200).send(result);
+        res.status(200).json({ emails: result });
 
     } catch (error: any) {
-        return res.status(404).send({ error: error.message });
+        res.status(500).json({ error: error.message });
     }
 }
 

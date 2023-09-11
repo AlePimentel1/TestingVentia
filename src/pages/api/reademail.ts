@@ -14,11 +14,11 @@ const read = async (req: NextApiRequest, res: NextApiResponse) => {
             method: 'GET',
             headers: {
                 Accept: 'application/json',
-                Authorization: `Bearer ${req.query.accesToken}`,
+                Authorization: `Bearer r3j2Q26H7vT8KBUIVwjePofwudyNh5`,
                 'Content-Type': 'application/json',
             }
         })
-        return res.status(200).send({ emails: `Tus emails son ${result.body}` })
+        return res.status(200).send({ emails: result.body })
 
     } catch (error) {
         return res.status(404).send({ error: error })

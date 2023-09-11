@@ -15,10 +15,12 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         case 'POST': {
             const authCode = req.query.code;
             console.log(`El código es: ${authCode}`);
-            // if (authCode) {
-            //     console.log(`El código es: ${authCode}`);
-            //     res.status(200).json({ authCode });
-            // }
+            if (authCode) {
+                console.log(`El código es: ${authCode}`);
+                return res.status(200).json({ authCode });
+            } else {
+                res.status(200).send({ error: "error" })
+            }
             // else {
             //     console.log("No se encontró el código en la URL de redirección.");
             //     res.status(400).json({ error: "Código no encontrado en la URL de redirección." });

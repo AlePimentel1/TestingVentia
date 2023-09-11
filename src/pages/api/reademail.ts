@@ -9,7 +9,6 @@ export async function handler(req: NextApiRequest, res: NextApiResponse) {
 
 const read = async (_: NextApiRequest, res: NextApiResponse) => {
     try {
-        console.log("Hola")
         const response = await fetch("https://api.nylas.com/messages?limit=5", {
             method: 'GET',
             headers: {
@@ -18,7 +17,6 @@ const read = async (_: NextApiRequest, res: NextApiResponse) => {
             },
             redirect: 'follow',
         });
-        console.log("Hola2")
         if (!response.ok) {
             throw new Error('Error en la solicitud GET');
         }

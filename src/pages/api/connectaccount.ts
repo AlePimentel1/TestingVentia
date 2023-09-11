@@ -10,19 +10,20 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
                 Location: authUrl,
             });
             res.end();
+            break
         }
         case 'POST': {
-            const redirectUrl = req.url;
-            const queryParams = new URLSearchParams(redirectUrl?.split('?')[1] || '');
-            const code = queryParams.get('code');
-            if (code) {
-                console.log(`El código es: ${code}`);
-                res.status(200).json({ code });
-            }
-            else {
-                console.log("No se encontró el código en la URL de redirección.");
-                res.status(400).json({ error: "Código no encontrado en la URL de redirección." });
-            }
+            const authCode = req.query.code;
+            console.log(`El código es: ${authCode}`);
+            // if (authCode) {
+            //     console.log(`El código es: ${authCode}`);
+            //     res.status(200).json({ authCode });
+            // }
+            // else {
+            //     console.log("No se encontró el código en la URL de redirección.");
+            //     res.status(400).json({ error: "Código no encontrado en la URL de redirección." });
+            // }
+            break
         }
     }
     // if (req.method === 'GET') {

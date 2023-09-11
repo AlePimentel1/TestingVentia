@@ -23,35 +23,35 @@ export default function Home() {
   const responseType = 'code';
   const redirectOnError = true;
 
-  const handleKnowAccount = async () => {
-    setIsLoading(true);
-    try {
-      const queryData = {
-        to,
-        subject,
-        message,
-      };
+  // const handleKnowAccount = async () => {
+  //   setIsLoading(true);
+  //   try {
+  //     const queryData = {
+  //       to,
+  //       subject,
+  //       message,
+  //     };
 
-      const response = await fetch('/api/sendemail', {
-        method: 'POST',
-        headers: {
-          'Accept': 'application/json',
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(queryData),
-      });
+  //     const response = await fetch('/api/sendemail', {
+  //       method: 'POST',
+  //       headers: {
+  //         'Accept': 'application/json',
+  //         'Content-Type': 'application/json',
+  //       },
+  //       body: JSON.stringify(queryData),
+  //     });
 
-      if (!response.ok) {
-        throw new Error('Error en la solicitud');
-      }
+  //     if (!response.ok) {
+  //       throw new Error('Error en la solicitud');
+  //     }
 
-      const data = await response.json();
-      console.log('Datos del webhook:', data);
-    } catch (error) {
-      console.error('Error:', error);
-    }
-    setIsLoading(false);
-  };
+  //     const data = await response.json();
+  //     console.log('Datos del webhook:', data);
+  //   } catch (error) {
+  //     console.error('Error:', error);
+  //   }
+  //   setIsLoading(false);
+  // };
 
   const router = useRouter();
 

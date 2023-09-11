@@ -15,6 +15,7 @@ export default function Home() {
   const [subject, setSubject] = useState('');
   const [message, setMessage] = useState('');
   const [isLoading, setIsLoading] = useState(false);
+  const [accountInfo, setAccountInfo] = useState('');
 
 
   const clientId = '8ynk5iozc6zhsjw8stk3z9a5a';
@@ -76,14 +77,13 @@ export default function Home() {
           }
           return response.json();
         })
-        .then((data) => {
+        .then((data: any) => {
           console.log('Respuesta del servidor:', data);
+          setAccountInfo(data.accountData);
         })
         .catch((error) => {
           console.error('Error al realizar la solicitud POST:', error);
         });
-
-      // const accountInfo = await fetch('/api/knowaccount')obtenerInformacionDeLaCuenta(authCode, client_id, client_secret);
     }
   }, [router.query.code]);
 
@@ -94,6 +94,14 @@ export default function Home() {
       <h1 className='m-4 font-bold'>Bienvenido, haz click y asocia tu Email</h1>
       <Link href='/api/connectaccount'>Autentica Email</Link>
 
+      <div>
+        {accountInfo && (
+          <div>
+            <h2>Información de la cuenta:</h2>
+            {accountInfo}
+          </div>
+        )}
+      </div>
 
       {/* <Button onClick={}>
         Autentificar Email

@@ -39,7 +39,7 @@ export default function Home() {
     };
 
     useEffect(() => {
-        const token = 'vHZC1tzfxcCvl3cVinEHla6lwzSgr8';
+        const token = 'r3j2Q26H7vT8KBUIVwjePofwudyNh5';
         const fetchData = async () => {
             try {
                 const response = await fetch(`/api/reademail?accessToken=${token}`, {

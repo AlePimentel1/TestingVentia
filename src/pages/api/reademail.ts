@@ -13,9 +13,9 @@ const read = async (_: NextApiRequest, res: NextApiResponse) => {
             method: 'GET',
             headers: {
                 "Authorization": "Bearer YAIt2ot9BtuQJF3TbMDCJw9LnPogrf",
-                // "Cookie": "__cf_bm=8VhaZOVXcpc3Yd09lHjaLFdQu_faQ3NgtPZkVVTb2IY-1694453477-0-ASLRfzicN5WMG3vFUAfzaNe0OfCXkrxsUX4K/aUysmrz0zyygFHZLGK0IypsvZTmKW/ccz6OT/1r9AxtFTxFZX0="
+                "Cookie": "__cf_bm=3FBcgXjgYfCP3mzYZ9sYxhUdrt22c2b9tkQFeH4fJ8k-1694456475-0-AXU/90MqSP5Dldckuh/GYFrTGrNw1jfN+j4AR+hRF3IDsE2HsJJuopYCoD0ECuu3RZf3v1DIFEbWfPTnuR+HTzw="
             },
-            redirect: 'follow' as RequestRedirect,
+            redirect: 'follow',
         });
 
         if (!response.ok) {

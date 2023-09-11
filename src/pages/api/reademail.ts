@@ -17,10 +17,10 @@ const read = async (_: NextApiRequest, res: NextApiResponse) => {
             },
             redirect: 'follow',
         });
+
         if (!response.ok) {
             const jsonResult = await response.json();
-            console.log(jsonResult);
-            throw new Error('Error en la solicitud GET');
+            return res.status(404).send({ error: jsonResult })
         }
 
         const result = await response.text();

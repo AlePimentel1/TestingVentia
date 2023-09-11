@@ -50,7 +50,6 @@ export default function Home() {
                         'Content-Type': 'application/json',
                     },
                 });
-                console.log(response)
                 console.log("C")
 
                 if (!response.ok) {

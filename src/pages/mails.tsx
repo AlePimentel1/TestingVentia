@@ -39,10 +39,9 @@ export default function Home() {
     };
 
     useEffect(() => {
-        const token = 'r3j2Q26H7vT8KBUIVwjePofwudyNh5';
         const fetchData = async () => {
             try {
-                const response = await fetch(`/api/reademail?accessToken=${token}`, {
+                const response = await fetch(`/api/reademail`, {
                     method: 'GET',
                     headers: {
                         'Accept': 'application/json',

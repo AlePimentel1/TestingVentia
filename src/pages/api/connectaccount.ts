@@ -43,7 +43,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
                         console.error('Error al realizar la solicitud POST:', error);
                     });
 
-                return res.status(200).send({ result: result })
+                return res.status(200).send({ result: result.data })
             }
             break
         }

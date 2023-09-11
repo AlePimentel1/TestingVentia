@@ -39,7 +39,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
                     return res.status(200).json(data);
                 } catch (error) {
-                    return res.status(500).json({ error: 'Error interno del servidor', elerror: error });
+                    return res.status(500).json({ error: 'Error interno del servidor' });
                 }
             }
             break;

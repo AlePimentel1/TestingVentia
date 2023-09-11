@@ -77,9 +77,12 @@ export default function Home() {
           }
           return response.json();
         })
-        .then((data: any) => {
-          console.log('Respuesta del servidor:', data);
-          setAccountInfo(data.accountData);
+        .then((data) => {
+          const parsedData = JSON.parse(data);
+          console.log('Respuesta del servidor:', parsedData);
+          setAccountInfo(parsedData.accountData);
+          // console.log('Respuesta del servidor:', data);
+          // setAccountInfo(data.accountData);
         })
         .catch((error) => {
           console.error('Error al realizar la solicitud POST:', error);
@@ -98,7 +101,7 @@ export default function Home() {
         {accountInfo && (
           <div>
             <h2>Información de la cuenta:</h2>
-            {accountInfo}
+            {JSON.stringify(accountInfo)}
           </div>
         )}
       </div>

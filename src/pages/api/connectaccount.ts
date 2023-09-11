@@ -13,7 +13,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
             break
         }
         case 'POST': {
-            return res.status(200).send(req.query)
+            return res.status(200).send(req.query.code)
             // const authCode = req.query.code;
             // console.log(`El código es: ${authCode}`);
             // if (authCode) {

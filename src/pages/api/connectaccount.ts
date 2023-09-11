@@ -13,35 +13,39 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
             break
         }
         case 'POST': {
-            // const authCode = req.query.code;
-            if (req.query) {
-                return res.status(200).send({ codigo: `El codigo es: ${JSON.stringify(req.body.code)}` })
+            const authCode = req.body.code;
+            const postData = {
+                client_id: '8ynk5iozc6zhsjw8stk3z9a5a',
+                client_secret: '9u4sdx0c3rk8yycoahntggjae',
+                grant_type: 'authorization_code',
+                code: authCode,
+            };
+
+            if (authCode) {
+                let result = await fetch('https://api.nylas.com/oauth/token', {
+                    method: 'POST',
+                    headers: {
+                        'Authorization': `Basic ${postData.client_secret}`,
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(postData),
+                })
+                    .then((response) => {
+                        if (!response.ok) {
+                            throw new Error('Error en la solicitud POST');
+                        }
+                        return response.json();
+                    })
+                    .then((data) => {
+                        console.log('Respuesta del servidor:', data);
+                    })
+                    .catch((error) => {
+                        console.error('Error al realizar la solicitud POST:', error);
+                    });
+
+                return res.status(200).send({ result: result })
             }
-            // return res.status(200).json({ authCode });
-            // } else {
-            //     res.status(404).send({ error: "error" })
-            // }
-            // else {
-            //     console.log("No se encontró el código en la URL de redirección.");
-            //     res.status(400).json({ error: "Código no encontrado en la URL de redirección." });
-            // }
             break
         }
     }
 }
-
-
-// const redirectUrl = req.url;
-
-//   // Obtener el "code" de los parámetros de la URL
-//   const queryParams = new URLSearchParams(redirectUrl.split('?')[1] || '');
-//   const code = queryParams.get('code');
-
-//   if (code) {
-//     console.log(`El código es: ${code}`);
-//     // Realiza aquí las acciones necesarias con el código
-//     res.status(200).json({ code });
-//   } else {
-//     console.log("No se encontró el código en la URL de redirección.");
-//     res.status(400).json({ error: "Código no encontrado en la URL de redirección." });
-//   }

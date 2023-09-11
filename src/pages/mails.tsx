@@ -42,7 +42,6 @@ export default function Home() {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                console.log("A")
                 const response = await fetch('/api/reademail', {
                     method: 'POST',
                     headers: {
@@ -54,7 +53,6 @@ export default function Home() {
                 if (!response.ok) {
                     throw new Error('Error en la solicitud');
                 }
-                console.log("B")
 
                 const data = await response.json();
                 console.log('Datos del webhook:', data);

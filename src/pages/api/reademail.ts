@@ -28,7 +28,6 @@ const read = async (_: NextApiRequest, res: NextApiResponse) => {
     } catch (error: any) {
         return res.status(404).send({ error: error })
     }
-
 }
 
 

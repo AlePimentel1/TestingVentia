@@ -23,9 +23,9 @@ const read = async (_: NextApiRequest, res: NextApiResponse) => {
             throw new Error('Error en la solicitud GET');
         }
 
-        const data = await result.text(); // Obtén el cuerpo de la respuesta como texto
+        // const data = await result.text();
 
-        return res.status(200).send({ emails: data });
+        return res.status(200).send(result);
 
     } catch (error: any) {
         return res.status(404).send({ error: error.message });

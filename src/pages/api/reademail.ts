@@ -18,6 +18,8 @@ const read = async (_: NextApiRequest, res: NextApiResponse) => {
             redirect: 'follow',
         });
         if (!response.ok) {
+            const jsonResult = await response.json();
+            console.log(jsonResult);
             throw new Error('Error en la solicitud GET');
         }
 

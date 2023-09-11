@@ -1,6 +1,5 @@
 import { NextApiRequest, NextApiResponse } from "next";
 
-
 export async function handler(req: NextApiRequest, res: NextApiResponse) {
     switch (req.method) {
         case "GET":
@@ -10,17 +9,14 @@ export async function handler(req: NextApiRequest, res: NextApiResponse) {
 
 const read = async (_: NextApiRequest, res: NextApiResponse) => {
     try {
-        const myHeaders = new Headers();
-        myHeaders.append("Authorization", "Bearer YAIt2ot9BtuQJF3TbMDCJw9LnPogrf");
-        myHeaders.append("Cookie", "__cf_bm=8VhaZOVXcpc3Yd09lHjaLFdQu_faQ3NgtPZkVVTb2IY-1694453477-0-ASLRfzicN5WMG3vFUAfzaNe0OfCXkrxsUX4K/aUysmrz0zyygFHZLGK0IypsvZTmKW/ccz6OT/1r9AxtFTxFZX0=");
-
-        const requestOptions = {
+        const response = await fetch("https://api.nylas.com/messages?limit=5", {
             method: 'GET',
-            headers: myHeaders,
+            headers: {
+                "Authorization": "Bearer YAIt2ot9BtuQJF3TbMDCJw9LnPogrf",
+                "Cookie": "__cf_bm=8VhaZOVXcpc3Yd09lHjaLFdQu_faQ3NgtPZkVVTb2IY-1694453477-0-ASLRfzicN5WMG3vFUAfzaNe0OfCXkrxsUX4K/aUysmrz0zyygFHZLGK0IypsvZTmKW/ccz6OT/1r9AxtFTxFZX0="
+            },
             redirect: 'follow' as RequestRedirect,
-        };
-
-        const response = await fetch("https://api.nylas.com/messages?limit=5", requestOptions);
+        });
 
         if (!response.ok) {
             throw new Error('Error en la solicitud GET');
@@ -28,11 +24,11 @@ const read = async (_: NextApiRequest, res: NextApiResponse) => {
 
         const result = await response.text();
 
-        res.status(200).json({ emails: result });
-
+        return res.status(200).send(result)
     } catch (error: any) {
-        res.status(500).json({ error: error.message });
+        return res.status(404).send({ error: error })
     }
+
 }
 
 

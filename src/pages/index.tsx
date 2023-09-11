@@ -3,9 +3,10 @@ import { Inter } from 'next/font/google'
 import { Button } from '@/components/ui/button'
 import { ArrowBigDown } from 'lucide-react'
 import { Input } from '@/components/ui/input'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Textarea } from '@/components/ui/textarea'
 import Link from 'next/link'
+import { useRouter } from 'next/router'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -51,27 +52,39 @@ export default function Home() {
     setIsLoading(false);
   };
 
-  // const handleLinkEmail = async () => {
-  //   try {
-  //     // Realiza la solicitud GET al endpoint api/connectacount
-  //     const response = await fetch('/api/connectaccount', {
-  //       method: 'GET',
-  //     }
-  //     )
-  //   } catch (error) {
-  //     console.log('Error:', error.message);
-  //   }
+  const router = useRouter();
 
-  //   // const clientId = '8ynk5iozc6zhsjw8stk3z9a5a'; // Reemplaza con tu client_id de Nylas
-  //   // const redirectUri = 'https://testing-ventia.vercel.app/'; // Reemplaza con tu redirect_uri de Nylas
-  //   // const responseType = 'code';
-  //   // const redirectOnError = true;
+  useEffect(() => {
+    // Verifica si la URL actual contiene un parámetro "code"
+    if (router.query.code) {
+      const code = router.query.code as string;
 
-  //   // const authUrl = `https://api.nylas.com/oauth/authorize?client_id=${clientId}&redirect_uri=${redirectUri}&response_type=${responseType}&redirect_on_error=${redirectOnError}`;
+      const postData = {
+        code
+      };
 
-  //   // window.location.href = authUrl;
-  // };
-
+      fetch('/api/connectaccount', {
+        method: 'POST',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(postData),
+      })
+        .then((response) => {
+          if (!response.ok) {
+            throw new Error('Error en la solicitud POST');
+          }
+          return response.json();
+        })
+        .then((data) => {
+          console.log('Respuesta del servidor:', data);
+        })
+        .catch((error) => {
+          console.error('Error al realizar la solicitud POST:', error);
+        });
+    }
+  }, [router.query.code]);
 
   return (
     <main

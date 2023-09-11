@@ -17,7 +17,7 @@ export default function Home() {
     const handleViewMessages = async () => {
         setIsLoading(true);
         try {
-            const response = await fetch('/api/sendemail', {
+            const response = await fetch('/api/reademail', {
                 method: 'POST',
                 headers: {
                     'Accept': 'application/json',
